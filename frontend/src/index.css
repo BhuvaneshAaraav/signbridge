@@ -1,0 +1,57 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-scale: 1rem;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 transition-colors duration-200 antialiased;
+    font-size: var(--font-scale);
+  }
+
+  /* High contrast mode */
+  body.high-contrast {
+    @apply bg-black text-yellow-300;
+  }
+
+  body.high-contrast a,
+  body.high-contrast button {
+    @apply ring-2 ring-yellow-400;
+  }
+
+  /* Large font mode */
+  body.large-font {
+    --font-scale: 1.2rem;
+  }
+
+  /* Dyslexia friendly font mode */
+  body.dyslexia-font {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', 'Verdana', sans-serif !important;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+}
+
+/* Accessible keyboard focus rings */
+:focus-visible {
+  outline: 3px solid #818cf8;
+  outline-offset: 3px;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
